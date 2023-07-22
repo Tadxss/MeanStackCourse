@@ -1,6 +1,6 @@
 # mean-stack-angular
 
-Mean Stack Course Project - Angular Part
+Mean Stack Course Project
 
 Running Project Locally
 
