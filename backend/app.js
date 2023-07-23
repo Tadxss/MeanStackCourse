@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -16,10 +17,12 @@ mongoose.connect("mongodb+srv://Tadxss:TbdePGt9rlmS5Faf@meanstackcluster.g5vvi5p
         console.log("Connection Failed!");
     });
 
-// This will return/parse valid JSON request to 
-// parse JSON data
+// This will return/parse valid JSON request to parse JSON data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// This is how we enable accessing the images saved to our backend folder
+app.use("/images", express.static(path.join("backend/images")));
 
 // Setting Up CORS
 app.use((req, res, next) => {
