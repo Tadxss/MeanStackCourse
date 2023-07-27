@@ -43,7 +43,8 @@ router.post(
     const post = new Post({
         title: req.body.title,
         content: req.body.content,
-        imagePath: url + "/images/" + req.file.filename
+        imagePath: url + "/images/" + req.file.filename,
+        creator: req.userData.userId
     });
     
     post.save().then(createdPost => {
@@ -62,7 +63,8 @@ router.post(
 
 // Updating Post
 router.put(
-    "/:id", 
+    "/:id",
+    // checkAuth,
     multer({ storage: storage }).single("image"), 
     (req, res, next) => {
 
@@ -79,7 +81,7 @@ router.put(
         imagePath: imagePath
     });
     
-    Post.updateOne({ _id: req.params.id }, post).then(result => {
+    Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(result => {
         res.status(200).json({
             message: "Post updated successfully"
         });
