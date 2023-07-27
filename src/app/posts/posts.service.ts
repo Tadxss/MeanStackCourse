@@ -30,14 +30,13 @@ export class PostsService {
               title: post.title,
               content: post.content,
               imagePath: post.imagePath,
-              creator: post.creator
+              // creator: post.creator
             }
           }),
           maxPosts: postData.maxPosts
         };
       }))
       .subscribe(transformedPostData => {
-
         this.posts = transformedPostData.posts;
         this.postsUpdated.next({ 
           posts: [...this.posts], 
