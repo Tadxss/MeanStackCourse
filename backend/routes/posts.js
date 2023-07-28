@@ -58,6 +58,10 @@ router.post(
                 imagePath: createdPost.imagePath
             }
         });
+    }).catch(error => {
+        res.status(500).json({
+            message: "Creating a post failed!"
+        });
     });
 });
 
@@ -92,6 +96,10 @@ router.put(
                 message: "Not authorized!"
             });
         }
+    }).catch(error => {
+        res.status(500).json({
+            message: "Couldn't update post!"
+        });
     });
 });
 
@@ -112,18 +120,22 @@ router.get("", (req, res, next) => {
             .limit(pageSize);
     }
 
-    postQuery
-        .then(documents => {
-            fetchedPosts = documents;
-            return Post.count()
-        })
-        .then(count => {
-            res.status(200).json({
-                message: 'Posts fetched successfully!',
-                posts: fetchedPosts,
-                maxPosts: count
-            });
+    postQuery.then(documents => {
+        fetchedPosts = documents;
+        return Post.count()
+    })
+    .then(count => {
+        res.status(200).json({
+            message: 'Posts fetched successfully!',
+            posts: fetchedPosts,
+            maxPosts: count
         });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: "Fetching posts failed!"
+        });
+    });
 });
 
 // Fetching Single Post
@@ -140,6 +152,11 @@ router.get("/:id", (req, res, next) => {
             });
         }
     })
+    .catch(error => {
+        res.status(500).json({
+            message: "Fetching post failed!"
+        });
+    });
 });
 
 // Deleting Post
@@ -158,7 +175,12 @@ router.delete(
                     message: "Not authorized!"
                 });
             }
-        });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: "Couldn't delete post!"
+            });
+        });;
 });
 
 module.exports = router;
