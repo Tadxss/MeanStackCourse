@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_ATLAS_USER": "Tadxss",
+        "MONGO_ATLAS_PW": "TbdePGt9rlmS5Faf",
+        "JWT_KEY": "secret_this_should_be_longer_than_you_think"
+    }
+}

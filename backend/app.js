@@ -10,11 +10,14 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 // Connecting to MongoDB
-mongoose.connect("mongodb+srv://Tadxss:TbdePGt9rlmS5Faf@meanstackcluster.g5vvi5p.mongodb.net/mean-stack?retryWrites=true").
-    then(() => {
+mongoose.connect("mongodb+srv://" 
+    + process.env.MONGO_ATLAS_USER
+    + ":" 
+    + process.env.MONGO_ATLAS_PW 
+    + "@meanstackcluster.g5vvi5p.mongodb.net/mean-stack?retryWrites=true"
+    ).then(() => {
         console.log("Connected to MongoDB Database");
-    })
-    .catch(() => {
+    }).catch(() => {
         console.log("Connection Failed!");
     });
 
