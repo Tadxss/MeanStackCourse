@@ -15,7 +15,8 @@ mat-spinner {
     width: 100%;
 }
 
-.post-image img {
+.post-image img { 
     width: 100%;
+    max-width: 500px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
