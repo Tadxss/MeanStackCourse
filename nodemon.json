@@ -1,7 +1,8 @@
 {
     "env": {
-        "MONGO_ATLAS_USER": "Tadxss",
-        "MONGO_ATLAS_PW": "TbdePGt9rlmS5Faf",
+        "MONGO_ATLAS_USER": "darylcodecraft",
+        "MONGO_ATLAS_PW": "yq83bZDfcaRz772t",
+        "MONGO_CLUSTER": "devcluster.zoo3ig4.mongodb.net",
         "JWT_KEY": "secret_this_should_be_longer_than_you_think"
     }
 }

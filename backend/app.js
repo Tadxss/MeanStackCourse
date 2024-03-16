@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://"
     + process.env.MONGO_ATLAS_USER
     + ":" 
     + process.env.MONGO_ATLAS_PW 
-    + "@meanstackcluster.g5vvi5p.mongodb.net/mean-stack?retryWrites=true"
+    + "@" + process.env.MONGO_CLUSTER + "/?retryWrites=true&w=majority&appName=DevCluster"
     ).then(() => {
         console.log("Connected to MongoDB Database");
     }).catch(() => {
